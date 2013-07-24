@@ -9,8 +9,8 @@
    * @package TheCity
    */
 
-  define("APIKEY","8d326a8d354fcdeb97cb2a7b83561ac654d4ad53"); // The City API key to use by default
-  define("USERTOKEN", "5a2aeeddac031b0a"); // The City API user token by default
+  // define("APIKEY","8d326a8d354fcdeb97cb2a7b83561ac654d4ad53"); // The City API key to use by default
+  // define("USERTOKEN", "5a2aeeddac031b0a"); // The City API user token by default
 
    /**
     * The path to the lib directory.

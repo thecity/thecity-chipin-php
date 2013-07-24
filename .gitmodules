@@ -1,0 +1,3 @@
+[submodule "lib/thecity-admin-php"]
+	path = lib/thecity-admin-php
+	url = git@github.com:weshays/thecity-admin-php.git
