@@ -2,7 +2,7 @@
 
 This PHP library is meant to be used with The City (Software to enable communication and community in your church).  
 
-A PHP library that wraps the donation endpoints for The City Admin API (api.onthecity.org) so that donations can be segmented for a campaign registry.  
+This library that wraps the donation endpoints for The City Admin API (api.onthecity.org) so that donations can be segmented for a campaign registry.  
 
 
 TheCity API docs  
@@ -20,33 +20,39 @@ Clone, fork or download the package.
 
 ### Submodules ###
 
-`
+```
 ~> git submodule init  
 ~> git submodule update  
-`
+```
 
 ### The City API Key/Token ###
 
-`
+```
 define('APIKEY', '*** YOUR API KEY ***');  
 define('USERTOKEN', '*** YOUR API TOKEN ***');  
-`
+```
 
 ### Including the library ###
 
-`require_once 'lib/the_city_chipin.php';`
+```
+require_once 'lib/the_city_chipin.php';  
+```
 
 ### Load campus options ###
 
-`$campuses = TheCityChipin::campus_options();`
+```
+$campuses = TheCityChipin::campus_options();  
+```
 
 
 ### Load fund options ###
 
-`TheCityChipin::fund_options($campus_id)`
+```
+TheCityChipin::fund_options($campus_id);  
+```
   
 
-## WordPress ## 
+## WordPress ##
 
 If you use WordPress there is a WordPress plugin that uses this library.  
 https://github.com/thecity/thecity-chipin-wordpres  <== NOT SET YET
