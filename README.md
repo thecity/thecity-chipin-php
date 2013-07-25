@@ -25,6 +25,9 @@ Clone, fork or download the package.
 ~> git submodule update  
 ```
 
+The submodule is thecity-admin-php API wrapper developed by @johnroberts.
+
+
 ### The City API Key/Token ###
 
 ```
