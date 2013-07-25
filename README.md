@@ -4,9 +4,8 @@ This PHP library is meant to be used with The City (Software to enable communica
 
 This library that wraps the donation endpoints for The City Admin API (api.onthecity.org) so that donations can be segmented for a campaign registry.  
 
-
 TheCity API docs  
-http://thecity.zendesk.com/entries/359458-using-the-plaza-json-api
+http://api.onthecity.org
 
 
 ## Requirements ##
@@ -25,7 +24,7 @@ Clone, fork or download the package.
 ~> git submodule update  
 ```
 
-The submodule is thecity-admin-php API wrapper developed by @johnroberts.
+The submodule is thecity-admin-php API wrapper developed by johnroberts (https://github.com/johnroberts).
 
 
 ### The City API Key/Token ###
