@@ -21,7 +21,7 @@ $campuses = TheCityChipin::campus_options();
 print_r($campuses);
 
 foreach($campuses as $id => $name) {
-  echo $name;
+  echo "$name \n";
   print_r(TheCityChipin::fund_options($id));
 }
 
