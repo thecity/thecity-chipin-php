@@ -71,6 +71,11 @@ $donation_designation_totals = $chipin->designation_totals();
 If you use WordPress there is a WordPress plugin that uses this library.  
 https://github.com/thecity/thecity-chipin-wordpres  <== NOT SET YET
   
+
+## Contributors
+
+John Roberts: https://github.com/johnroberts
+
   
 ## Contributing ##
 
