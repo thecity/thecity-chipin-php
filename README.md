@@ -48,7 +48,21 @@ $campuses = TheCityChipin::campus_options();
 ### Load fund options ###
 
 ```
-TheCityChipin::fund_options($campus_id);  
+$funds = TheCityChipin::fund_options($campus_id);  
+```
+
+### Load donation grouped by designation ###
+
+```
+$campus_id = '32316';    
+$fund_id = '10549';         
+$start_date = '2013-07-01';
+$end_date = '2013-07-20';   // Optional 
+
+$donation_designation_groups = $chipin->donations();
+
+// The designation_totals() function can be called after donations() function has been called.
+$donation_designation_totals = $chipin->designation_totals();
 ```
   
 
