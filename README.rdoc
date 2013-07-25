@@ -21,34 +21,34 @@ Clone, fork or download the package.
 ### Submodules ###
 
 ```
-~> git submodule init
-~> git submodule update
+~> git submodule init  
+~> git submodule update  
 ```
 
 ### The City API Key/Token ###
 
 ```
-define('APIKEY', '*** YOUR API KEY ***');
+define('APIKEY', '*** YOUR API KEY ***');  
 define('USERTOKEN', '*** YOUR API TOKEN ***');  
 ```
 
 ### Including the library ###
 
 ```
-require_once 'lib/the_city_chipin.php';
+require_once 'lib/the_city_chipin.php';  
 ```
 
 ### Load campus options ###
 
 ```
-$campuses = TheCityChipin::campus_options();
+$campuses = TheCityChipin::campus_options();  
 ```
 
 
 ### Load fund options ###
 
 ```
-TheCityChipin::fund_options($campus_id)
+TheCityChipin::fund_options($campus_id);  
 ```
   
 
