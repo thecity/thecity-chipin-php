@@ -11,18 +11,22 @@ require_once 'city_keys.php';
 
 require_once 'lib/the_city_chipin.php';
 
-$campus_id = '76560'; // Dave H's Campus
-$fund_id = '7447'; // Easter Offering Fund
-$start_date = '2013-05-01';
-
-$chipin = new TheCityChipin($campus_id, $fund_id, $start_date);
+$campus_id = '32316'; // Sparks campus
+$fund_id = '10549'; // Sparks Expansion 2013
+$start_date = '2013-07-01';
 
 $campuses = TheCityChipin::campus_options();
 print_r($campuses);
 
 foreach($campuses as $id => $name) {
-  echo "$name \n";
+  echo "$name ($id) \n";
   print_r(TheCityChipin::fund_options($id));
 }
+
+
+$chipin = new TheCityChipin($campus_id, $fund_id, $start_date);
+
+print_r($chipin->donations());
+print_r($chipin->designation_totals());
 
 ?>
