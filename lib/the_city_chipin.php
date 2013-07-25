@@ -50,6 +50,7 @@
       $this->ca = new CityApi(); 
     }
 
+
     /**
      * Returns an Array containing Fund IDs and Name.  The Array key is the fund ID and the Array value is the fund name.
      * These are only funds that can be given to online.
@@ -59,14 +60,50 @@
      *
      * @return Array
      */
-    public function fund_options() {  
+    public static function campus_options() {  
+      $ca = new CityApi(); 
       $retval = array();
       $current_page = 1;
       $total_pages = 0;
-      $options = array('page' => $current_page, 'campus_id' => $this->campus_id);
+      $options = array('page' => $current_page);
 
       do {
-        $json = $this->ca->funds_index($options);
+        $json = $ca->campuses_index($options);
+        $results = json_decode($json, true);
+
+        $per_page = $results['per_page'];
+        $total_pages = $results['total_pages'];
+        $total_entries = $results['total_entries'];
+        $current_page = $results['current_page'];
+
+        foreach ($results['campuses'] as $fund) {
+          $retval[$fund['id']] = $fund['name'];
+        }
+      } while($current_page < $total_pages);
+
+      return $retval;
+    }
+
+
+
+    /**
+     * Returns an Array containing Fund IDs and Name.  The Array key is the fund ID and the Array value is the fund name.
+     * These are only funds that can be given to online.
+     *
+     * Example:
+     * Array(7447 => 'General Fund', 10546 => 'Building Fund')
+     *
+     * @return Array
+     */
+    public static function fund_options($campus_id) {  
+      $ca = new CityApi(); 
+      $retval = array();
+      $current_page = 1;
+      $total_pages = 0;
+      $options = array('page' => $current_page, 'campus_id' => $campus_id);
+
+      do {
+        $json = $ca->funds_index($options);
         $results = json_decode($json, true);
 
         $per_page = $results['per_page'];
