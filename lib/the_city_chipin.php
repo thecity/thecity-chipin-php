@@ -5,7 +5,7 @@
    * File:       the_city.php
    *
    * @author Wes Hays <wes@onthecity.org> 
-   * @link https://github.com/thecity/thecity-plaza-php
+   * @link https://github.com/thecity/thecity-chipin-php
    * @version 1.0
    * @package TheCity
    */
@@ -155,9 +155,10 @@
       $donations_found = json_decode($json, true);
 
       foreach ($donations_found as $donation) {
-        $key = preg_replace('/\s+/', ' ', trim($donation['note']));        
+        $key = preg_replace('/\s+/', ' ', trim($donation['note']));   
+        $key = strtolower($key);     
         if(empty($white_list)) {
-          if(empty($key)) { $key = 'Unknown'; }
+          if(empty($key)) { $key = 'unknown'; }
         } else {
           if(!in_array($key, $white_list)) { $key = null; }
         }
@@ -176,6 +177,14 @@
     }
 
 
+    /**
+     * Returns an array of designations and their totals. The totals are in cents.
+     *
+     * Example:
+     * array('chairs' => 74500, 'classrooms' => 98500)    
+     *
+     * @return Array
+     */
     public function designation_totals() {
       return $this->totals;
     }
