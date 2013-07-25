@@ -31,7 +31,10 @@
     private $fund_id;
 
     // The date to start checking for donations for the specified fund_id.
-    private $start_date;    
+    private $start_date;   
+
+    // The last date for checking donations for the specified fund_id.
+    private $end_date;   
 
     // An instance of the CityAPI.
     private $ca;
@@ -45,11 +48,13 @@
      * @param string $campus_id The campus to pull donations for.
      * @param string $fund_id The fund ID to pull donations for.
      * @param string $start_date The date to start polling for donations to the specified fund.
+     * @param string $end_date The last date to check for donations to the specified fund.
      */
-    public function __construct($campus_id, $fund_id, $start_date) {
+    public function __construct($campus_id, $fund_id, $start_date, $end_date = null) {
       $this->campus_id = $campus_id;
       $this->fund_id = $fund_id;
       $this->start_date = $start_date;   
+      $this->end_date = $end_date;   
       $this->ca = new CityApi(); 
       $this->totals = array();
     }
@@ -144,14 +149,15 @@
     public function donations($white_list = array()) {  
       $ca = new CityApi(); 
       $retval = array();
-      $json = $ca->donations_index(
-        array(
-          'campus_id' => $this->campus_id, 
-          'fund_id' => $this->fund_id, 
-          'start_date' => $this->start_date,
-          'paginate' => 'false'
-        )
+      $options = array(
+        'campus_id' => $this->campus_id, 
+        'fund_id' => $this->fund_id, 
+        'start_date' => $this->start_date,
+        'paginate' => 'false'
       );
+      if(!empty($this->end_date)) { $options['end_date'] = $this->end_date; }
+      
+      $json = $ca->donations_index($options);
       $donations_found = json_decode($json, true);
 
       foreach ($donations_found as $donation) {

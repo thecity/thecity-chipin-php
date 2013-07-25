@@ -14,6 +14,7 @@ require_once 'lib/the_city_chipin.php';
 $campus_id = '32316'; // Sparks campus
 $fund_id = '10549'; // Sparks Expansion 2013
 $start_date = '2013-07-01';
+$end_date = '2013-07-20';
 
 $campuses = TheCityChipin::campus_options();
 print_r($campuses);
@@ -24,7 +25,7 @@ foreach($campuses as $id => $name) {
 }
 
 
-$chipin = new TheCityChipin($campus_id, $fund_id, $start_date);
+$chipin = new TheCityChipin($campus_id, $fund_id, $start_date, $end_date);
 
 print_r($chipin->donations());
 print_r($chipin->designation_totals());
