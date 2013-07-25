@@ -61,6 +61,8 @@ $fund_id = '10549';
 $start_date = '2013-07-01';
 $end_date = '2013-07-20';   // Optional 
 
+$chipin = new TheCityChipin($campus_id, $fund_id, $start_date, $end_date);
+
 $donation_designation_groups = $chipin->donations();
 
 // The designation_totals() function can be called after donations() function has been called.
