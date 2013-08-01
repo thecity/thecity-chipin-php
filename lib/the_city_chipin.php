@@ -61,11 +61,11 @@
 
 
     /**
-     * Returns an Array containing Fund IDs and Name.  The Array key is the fund ID and the Array value is the fund name.
+     * Returns an Array containing Campus IDs and Name.  The Array key is the campus ID and the Array value is the campus name.
      * These are only funds that can be given to online.
      *
      * Example:
-     * array(7447 => 'General Fund', 10546 => 'Building Fund')
+     * array(24532 => 'Reno', 34354 => 'Sparks')
      *
      * @return Array
      */
@@ -84,8 +84,8 @@
         $total_entries = $results['total_entries'];
         $current_page = $results['current_page'];
 
-        foreach ($results['campuses'] as $fund) {
-          $retval[$fund['id']] = $fund['name'];
+        foreach ($results['campuses'] as $campus) {
+          $retval[$campus['id']] = $campus['name'];
         }
         $current_page++;
       } while($current_page < $total_pages);
