@@ -44,19 +44,23 @@
 
     /**
      *  Constructor.
-     *
+     * @param string $apikey The City API key to use.
+     * @param string $usertoken The City API user token. 
      * @param string $campus_id The campus to pull donations for.
      * @param string $fund_id The fund ID to pull donations for.
      * @param string $start_date The date to start polling for donations to the specified fund.
      * @param string $end_date The last date to check for donations to the specified fund.
      */
-    public function __construct($campus_id, $fund_id, $start_date, $end_date = null) {
+    public function __construct($apikey, $usertoken, $campus_id, $fund_id, $start_date, $end_date = null) {
       $this->campus_id = $campus_id;
       $this->fund_id = $fund_id;
       $this->start_date = $start_date;   
       $this->end_date = $end_date;   
-      $this->ca = new CityApi(); 
       $this->totals = array();
+
+      $this->ca = new CityApi(); 
+      $this->ca->set_key($apikey);
+      $this->ca->set_token($usertoken);
     }
 
 
@@ -67,10 +71,16 @@
      * Example:
      * array(24532 => 'Reno', 34354 => 'Sparks')
      *
+     * @param string $apikey The City API key to use.
+     * @param string $usertoken The City API user token.      
+     *
      * @return Array
      */
-    public static function campus_options() {  
+    public static function campus_options($apikey, $usertoken) {  
       $ca = new CityApi(); 
+      $ca->set_key($apikey);
+      $ca->set_token($usertoken);
+
       $retval = array();
       $current_page = 1;
       $total_pages = 0;
@@ -102,10 +112,16 @@
      * Example:
      * array(7447 => 'General Fund', 10546 => 'Building Fund')
      *
+     * @param string $apikey The City API key to use.
+     * @param string $usertoken The City API user token.   
+     *
      * @return Array
      */
-    public static function fund_options($campus_id) {  
+    public static function fund_options($apikey, $usertoken, $campus_id) {  
       $ca = new CityApi(); 
+      $ca->set_key($apikey);
+      $ca->set_token($usertoken);
+
       $retval = array();
       $current_page = 1;
       $total_pages = 0;
@@ -142,12 +158,17 @@
      *                              array('entered_on' => '2013-05-01', 'amount_cents' => 20000))    
      *
      *
+     * @param string $apikey The City API key to use.
+     * @param string $usertoken The City API user token.   
      * @param string $white_list (optional) A while list of designations (memo field) to filter the donations on. 
      *
      * @return Array
      */
-    public function donations($white_list = array()) {  
+    public function donations($apikey, $usertoken, $white_list = array()) {  
       $ca = new CityApi(); 
+      $ca->set_key($apikey);
+      $ca->set_token($usertoken);
+
       $retval = array();
       $options = array(
         'campus_id' => $this->campus_id, 
