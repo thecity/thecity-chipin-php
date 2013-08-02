@@ -11,12 +11,6 @@
    */
    
 
-  /**
-   * Includes the autoloader.
-   */
-  include_once(dirname(__FILE__) . '/auto_load.php');
-
-
   /** 
    * This class is meant to be a wrapper for the OnTheCity.org API.
    *
