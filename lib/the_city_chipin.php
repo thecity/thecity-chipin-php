@@ -11,6 +11,9 @@
    */
    
 
+  include_once(dirname(__FILE__) . '/thecity-admin-php/lib/ca-main.php');   
+
+
   /** 
    * This class is meant to be a wrapper for the OnTheCity.org API.
    *
@@ -158,11 +161,7 @@
      *
      * @return Array
      */
-    public function donations($apikey, $usertoken, $white_list = array()) {  
-      $ca = new CityApi(); 
-      $ca->set_key($apikey);
-      $ca->set_token($usertoken);
-
+    public function donations($white_list = array()) {  
       $retval = array();
       $options = array(
         'campus_id' => $this->campus_id, 
@@ -172,7 +171,7 @@
       );
       if(!empty($this->end_date)) { $options['end_date'] = $this->end_date; }
       
-      $json = $ca->donations_index($options);
+      $json = $this->ca->donations_index($options);
       $donations_found = json_decode($json, true);
 
       foreach ($donations_found as $donation) {
