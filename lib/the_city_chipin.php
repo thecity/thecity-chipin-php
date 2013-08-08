@@ -170,6 +170,7 @@
         'paginate' => 'false'
       );
       if(!empty($this->end_date)) { $options['end_date'] = $this->end_date; }
+      $lowercase_white_list = array_map('strtolower', $white_list);
       
       $json = $this->ca->donations_index($options);
       $donations_found = json_decode($json, true);
@@ -177,10 +178,10 @@
       foreach ($donations_found as $donation) {
         $key = preg_replace('/\s+/', ' ', trim($donation['note']));   
         $key = strtolower($key);     
-        if(empty($white_list)) {
+        if(empty($lowercase_white_list)) {
           if(empty($key)) { $key = 'unknown'; }
         } else {
-          if(!in_array($key, $white_list)) { $key = null; }
+          if(!in_array($key, $lowercase_white_list)) { $key = null; }
         }
         if($key != null) {
           if(!array_key_exists($key, $retval)) { 
