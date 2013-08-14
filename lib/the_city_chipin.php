@@ -90,8 +90,9 @@
         $total_pages = isset($results['total_pages']) ? $results['total_pages'] : 0;
         $total_entries = isset($results['total_entries']) ? $results['total_entries'] : 0;
         $current_page = isset($results['current_page']) ? $results['current_page'] : 0;
+        $campuses = isset($results['campuses']) ? $results['campuses'] : array();
 
-        foreach ($results['campuses'] as $campus) {
+        foreach ($campuses as $campus) {
           $retval[$campus['id']] = $campus['name'];
         }
         $current_page++;
@@ -131,8 +132,9 @@
         $total_pages = isset($results['total_pages']) ? $results['total_pages'] : 0;
         $total_entries = isset($results['total_entries']) ? $results['total_entries'] : 0;
         $current_page = isset($results['current_page']) ? $results['current_page'] : 0;
+        $funds = isset($results['funds']) ? $results['funds'] : array();
 
-        foreach ($results['funds'] as $fund) {
+        foreach ($funds as $fund) {
           $retval[$fund['id']] = $fund['name'];
         }
         $current_page++;
