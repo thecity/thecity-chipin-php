@@ -86,10 +86,10 @@
         $json = $ca->campuses_index(array('page' => $current_page));
         $results = json_decode($json, true);
 
-        $per_page = $results['per_page'];
-        $total_pages = $results['total_pages'];
-        $total_entries = $results['total_entries'];
-        $current_page = $results['current_page'];
+        $per_page = isset($results['per_page']) ? $results['per_page'] : 0;
+        $total_pages = isset($results['total_pages']) ? $results['total_pages'] : 0;
+        $total_entries = isset($results['total_entries']) ? $results['total_entries'] : 0;
+        $current_page = isset($results['current_page']) ? $results['current_page'] : 0;
 
         foreach ($results['campuses'] as $campus) {
           $retval[$campus['id']] = $campus['name'];
@@ -127,10 +127,10 @@
         $json = $ca->funds_index(array('page' => $current_page, 'campus_id' => $campus_id));
         $results = json_decode($json, true);
 
-        $per_page = $results['per_page'];
-        $total_pages = $results['total_pages'];
-        $total_entries = $results['total_entries'];
-        $current_page = $results['current_page'];
+        $per_page = isset($results['per_page']) ? $results['per_page'] : 0;
+        $total_pages = isset($results['total_pages']) ? $results['total_pages'] : 0;
+        $total_entries = isset($results['total_entries']) ? $results['total_entries'] : 0;
+        $current_page = isset($results['current_page']) ? $results['current_page'] : 0;
 
         foreach ($results['funds'] as $fund) {
           $retval[$fund['id']] = $fund['name'];
